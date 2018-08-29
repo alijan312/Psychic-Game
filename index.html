@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Psychic Game</title>
+</head>
+
+<body>
+
+    <!-- // User should make a choice
+        // Computer should make a choice
+        //Capture choices   
+        // Compare choices made by both and determine the results 
+        // Change the scores accordingly
+        // Put the required text -->
+
+    <div>
+
+        <p id="introtext">Guess what I'm thinking of</p>
+        <p id="winstext">Wins:</p>
+        <p id="lossestext">Losses:</p>
+        <p id="guesseslefttext">Guesses left:</p>
+        <p id="guessestext">Your guesses so far:</p>
+
+    </div>
+
+    <script type="text/javascript">
+        var computerchoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
+            "s", "t", "u", "v", "w", "x", "y", "z"
+        ];
+        var wins = 0;
+        var losses = 0;
+        var guessesleft = 9;
+        var guesses;
+
+
+        var introtext = document.getElementById("introtext");
+        var winstext = document.getElementById("winstext");
+        var lossestext = document.getElementById("lossestext");
+        var guesseslefttext = document.getElementById("guesseslefttext");
+        var guessestext = document.getElementById("guessestext");
+
+
+        document.onkeyup = function () {
+            var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+            console.log(userGuess);
+
+            var computerGuess = computerchoices[Math.floor(Math.random() * computerchoices.length)];
+
+            console.log(computerGuess);
+
+            if (userGuess == computerGuess) {
+                wins++;
+                guessesleft--;
+            } else {
+                losses++;
+                guessesleft--;
+            }
+
+            winstext.textContent = "Wins:" + wins;
+            lossestext.textContent = "Losses:" + losses;
+            guesseslefttext.textContent = "Guesses left: " + guessesleft;
+
+            // I couldn't add a function that would restart the game after
+            //  "guesses left" reaches to zero and keeping wins and losses scores unchanged
+
+            // inserting letters chosen by the user is missing. 
+
+        
+
+
+
+        }
+    </script>
+</body>
+
+</html>
